@@ -1,7 +1,7 @@
 package pontmobile.vehicules;
 
-import fr.iutgon.r305.pontmobile.modele.Pont;
-import fr.iutgon.r305.pontmobile.modele.SensVehicule;
+import pontmobile.Pont;
+import pontmobile.SensVehicule;
 
 /** Classe de base d'un thread représentant un véhicule terrestre. */
 public abstract class Vehicule implements Runnable {

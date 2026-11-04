@@ -1,7 +1,7 @@
 package pontmobile.vehicules;
 
-import fr.iutgon.r305.pontmobile.modele.Pont;
-import fr.iutgon.r305.pontmobile.modele.SensVehicule;
+import pontmobile.Pont;
+import pontmobile.SensVehicule;
 
 /** Base des ambulances et véhicules de pompiers prioritaires. */
 public abstract class VehiculesPrioritaire extends Vehicule {

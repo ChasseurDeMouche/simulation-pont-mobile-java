@@ -1,7 +1,7 @@
 package pontmobile.vehicules;
 
-import fr.iutgon.r305.pontmobile.modele.Pont;
-import fr.iutgon.r305.pontmobile.modele.SensVehicule;
+import pontmobile.Pont;
+import pontmobile.SensVehicule;
 
 /** Véhicule occupant deux segments consécutifs. */
 public class Camion extends Vehicule {
