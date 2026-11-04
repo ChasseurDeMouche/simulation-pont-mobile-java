@@ -1,16 +1,22 @@
-package ontmobile;
+package pontmobile;
 
-import pontmobile.modele.Pont;
-import pontmobile.modele.EtatPont;
+import pontmobile.modele.*;
+import pontmobile.bateau.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Pont pont = new Pont(8);
-        System.out.println("Nombre de segments : " + pont.getNombreSegments());
-        System.out.println("État initial : " + pont.getEtat());
+        GestionnaireBateaux gestionnaire = new GestionnaireBateaux(pont);
 
-        if (pont.getEtat() == EtatPont.FERME) {
-            System.out.println("Le pont est bien fermé par défaut.");
-        }
+        System.out.println("--- Début de la simulation des bateaux ---");
+
+        // Lancement de 3 bateaux en parallèle
+        Bateau b1 = new Bateau(1, SensBateau.NORD_SUD, gestionnaire);
+        Bateau b2 = new Bateau(2, SensBateau.SUD_NORD, gestionnaire);
+        Bateau b3 = new Bateau(3, SensBateau.NORD_SUD, gestionnaire);
+
+        b1.start();
+        b2.start();
+        b3.start();
     }
 }
