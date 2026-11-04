@@ -1,7 +1,8 @@
-package modele;
+package pontmobile.modele;
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 /**
  * Représente le pont mobile bidirectionnel.
@@ -64,8 +65,7 @@ public class Pont {
     public synchronized void demanderOuverture() throws InterruptedException {
         ouvertureDemandeeParBateaux = true;
 
-        // 1. Attendre que le délai minimal d'une minute soit écoulé depuis la dernière fermeture[cite: 4]
-        long secondesDepuisFermeture = ChronoUnit.SECONDS.between(heureDerniereFermeture, LocalDateTime.now());
+        long secondesDepuisFermeture = Duration.between(heureDerniereFermeture, LocalDateTime.now()).getSeconds();
         if (secondesDepuisFermeture < 60) {
             long attenteMillis = (60 - secondesDepuisFermeture) * 1000;
             System.out.println("[PONT] En attente du délai réglementaire avant prochaine ouverture (" + (60 - secondesDepuisFermeture) + "s)...");
