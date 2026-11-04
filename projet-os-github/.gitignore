@@ -1,0 +1,23 @@
+# Fichiers compilés Java
+*.class
+
+# Répertoires de compilation courants
+/bin/
+/out/
+/build/
+/target/
+
+# Fichiers temporaires et journaux
+*.log
+*.tmp
+
+# Paramètres locaux d'éditeurs/IDE
+.idea/
+.vscode/
+.settings/
+.project
+.classpath
+
+# Fichiers système
+.DS_Store
+Thumbs.db
