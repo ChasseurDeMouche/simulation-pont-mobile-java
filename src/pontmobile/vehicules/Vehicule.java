@@ -1,44 +1,51 @@
 package pontmobile.vehicules;
 
 import pontmobile.Pont;
-import pontmobile.SensVehicule;
+import pontmobile.modele.SensVehicule;
 
 /** Classe de base d'un thread représentant un véhicule terrestre. */
-public abstract class Vehicule implements Runnable {
+public abstract class Vehicule extends Thread {
 
-    private final String id;
+    private final String identifiant;
     private final Pont pont;
     private final SensVehicule sens;
-    public abstract int getLongueurEnSegments();
 
-    /** Crée un véhicule avec un identifiant, un pont et un sens. */
-    protected Vehicule(String id, Pont pont, SensVehicule sens) {
-        if (id == null || pont == null || sens == null) {
-            throw new IllegalArgumentException("L'id, le pont et le sens sont obligatoires.");
+    protected Vehicule(String identifiant, Pont pont, SensVehicule sens) {
+        if (identifiant == null || pont == null || sens == null) {
+            throw new IllegalArgumentException(
+                    "L'identifiant, le pont et le sens sont obligatoires."
+            );
         }
-        this.id = id;
+
+        this.identifiant = identifiant;
         this.pont = pont;
         this.sens = sens;
+        setName(identifiant);
     }
 
-
-    public String getId() {
-        return id;
+    public String getIdentifiant() {
+        return identifiant;
     }
-
 
     public Pont getPont() {
         return pont;
     }
 
-
     public SensVehicule getSens() {
         return sens;
     }
 
-    /** Indique si le véhicule interdit la présence du sens opposé. */
+    public abstract int getLongueurEnSegments();
+
+    /** Chaque sous-classe définit sa traversée dans cette méthode. */
+    @Override
+    @Override
+    public void run() {
+        // Traversée du camion à coder
+    }
+
+    /** Indique si le véhicule bloque les entrées du sens opposé. */
     public boolean bloqueSensOppose() {
         return false;
     }
-
 }

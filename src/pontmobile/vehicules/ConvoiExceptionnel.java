@@ -1,7 +1,7 @@
 package pontmobile.vehicules;
 
 import pontmobile.Pont;
-import pontmobile.SensVehicule;
+import pontmobile.modele.SensVehicule;
 
 /** Véhicule long occupant quatre segments et bloquant le sens opposé. */
 public class ConvoiExceptionnel extends Vehicule {
