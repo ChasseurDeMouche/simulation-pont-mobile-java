@@ -43,7 +43,7 @@ public class Main {
         SensVehicule gd = SensVehicule.GAUCHE_DROITE;
         SensVehicule dg = SensVehicule.DROITE_GAUCHE;
 
-        Journal.log("=== Début de la simulation du pont mobile (" + Config.NB_SEGMENTS + " segments) ===");
+        Journal.log("=== Debut de la simulation du pont mobile (" + Config.NB_SEGMENTS + " segments) ===");
 
         // 1) Circulation dans les deux sens : voitures et camions
         lancer(0, new Voiture("V1", pont, gd));
@@ -77,6 +77,6 @@ public class Main {
         for (Thread t : threads) {
             t.join();
         }
-        Journal.log("=== Fin de la simulation : tous les véhicules et bateaux sont passés ===");
+        Journal.log("=== Fin de la simulation : tous les vehicules et bateaux sont passes ===");
     }
 }

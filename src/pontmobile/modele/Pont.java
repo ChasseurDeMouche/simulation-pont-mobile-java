@@ -88,7 +88,7 @@ public class Pont {
         if (v.bloqueSensOppose()) {
             // Règle du convoi : l'entrée opposée est bloquée dès son arrivée.
             convoisBloquants[1 - s]++;
-            Journal.log(v + " arrive " + v.getSens() + " -> entrée " + v.getSens().oppose() + " bloquée");
+            Journal.log(v + " arrive " + v.getSens() + " -> entree " + v.getSens().oppose() + " bloquee");
         } else {
             Journal.log(v + " arrive " + v.getSens());
         }
@@ -191,13 +191,13 @@ public class Pont {
             voies[s][i] = null;
         }
         nbVehicules[s]--;
-        Journal.log(v + " a quitté le pont");
+        Journal.log(v + " a quitte le pont");
 
         if (v.bloqueSensOppose()) {
             convoiSurPont[s] = false;
             convoisBloquants[1 - s]--;
             if (convoisBloquants[1 - s] == 0) {
-                Journal.log("Entrée " + v.getSens().oppose() + " débloquée");
+                Journal.log("Entree " + v.getSens().oppose() + " debloquee");
             }
         }
         notifyAll();
@@ -233,7 +233,7 @@ public class Pont {
             Journal.log(v + " entre sur le pont, voie " + v.getSens() + " libre");
         } else {
             Journal.log(v + " entre sur le pont : " + ranges
-                    + " se rangent sur la bande d'urgence (segments conservés)");
+                    + " se rangent sur la bande d'urgence (segments conserves)");
         }
         afficher();
     }
@@ -257,7 +257,7 @@ public class Pont {
         int s = v.getSens().ordinal();
         prioritaires.remove(v);
         nbVehicules[s]--;
-        Journal.log(v + " a quitté le pont");
+        Journal.log(v + " a quitte le pont");
 
         if (!prioritaireDansLeSens(s)) {
             List<String> ranges = vehiculesSurVoie(s);
@@ -308,7 +308,7 @@ public class Pont {
         fileBateaux.add(b);
         Journal.log(b + " arrive (" + b.getSens() + "), rang " + fileBateaux.size() + " dans la file");
         if (!ouvertureAutorisee) {
-            Journal.log("   prochaine ouverture autorisée à " + prochaineOuverture.format(HEURE));
+            Journal.log("   prochaine ouverture autorisee a " + prochaineOuverture.format(HEURE));
         }
         notifyAll();
     }
@@ -333,7 +333,7 @@ public class Pont {
 
             // Prise en charge de l'ouverture : plus aucun véhicule n'entre.
             ouvertureDemandee = true;
-            Journal.log("Ouverture demandée : entrées du pont bloquées");
+            Journal.log("Ouverture demandee : entrees du pont bloquees");
             while (nbVehicules[0] + nbVehicules[1] > 0) {
                 wait(); // les véhicules engagés terminent leur traversée
             }
@@ -359,7 +359,7 @@ public class Pont {
     public void finPassage(Bateau b) throws InterruptedException {
         synchronized (this) {
             fileBateaux.poll();
-            Journal.log(b + " a passé le pont");
+            Journal.log(b + " a passe le pont");
             if (!fileBateaux.isEmpty()) {
                 notifyAll(); // au tour du bateau suivant
                 return;
@@ -374,8 +374,8 @@ public class Pont {
             LocalTime heureFermeture = LocalTime.now();
             prochaineOuverture = heureFermeture.plusNanos(Config.DELAI_ENTRE_OUVERTURES * 1_000_000);
             ouvertureAutorisee = false;
-            Journal.log("Fermeture complète à " + heureFermeture.format(HEURE)
-                    + " -> prochaine ouverture autorisée à " + prochaineOuverture.format(HEURE));
+            Journal.log("Fermeture complete a " + heureFermeture.format(HEURE)
+                    + " -> prochaine ouverture autorisee a " + prochaineOuverture.format(HEURE));
             timer.schedule(new TacheAutorisationOuverture(this), Config.DELAI_ENTRE_OUVERTURES);
             notifyAll(); // les véhicules peuvent de nouveau entrer
         }
@@ -389,10 +389,10 @@ public class Pont {
     public synchronized void autoriserOuverture() {
         ouvertureAutorisee = true;
         if (fileBateaux.isEmpty()) {
-            Journal.log("Timer : ouverture de nouveau autorisée (aucun bateau en attente)");
+            Journal.log("Timer : ouverture de nouveau autorisee (aucun bateau en attente)");
         } else {
-            Journal.log("Timer : ouverture autorisée, " + fileBateaux.size()
-                    + " bateau(x) en attente -> ouverture déclenchée");
+            Journal.log("Timer : ouverture autorisee, " + fileBateaux.size()
+                    + " bateau(x) en attente -> ouverture declenchee");
         }
         notifyAll();
     }
