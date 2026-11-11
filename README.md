@@ -19,7 +19,7 @@ Simuler la circulation de véhicules sur un pont mobile et le passage de bateaux
 
 ## Compiler et lancer
 
-Prérequis : JDK 17 ou plus récent.
+Prérequis : Java 11 ou plus récent (le `.jar` est compilé avec `--release 11`).
 
 ```bash
 java -jar pont-mobile.jar
@@ -50,7 +50,7 @@ src/pontmobile/
 │   └── VehiculePompiers.java
 └── bateau/
     └── Bateau.java            thread d'un bateau (file FIFO)
-docs/UML.md                    schéma UML des classes
+docs/UML.png, docs/UML.pdf     schéma UML des classes (source Mermaid : docs/UML.md)
 PARTIES_NON_REALISEES.txt      simplifications et parties restantes
 pont-mobile.jar                exécutable
 ```

@@ -1,6 +1,8 @@
 # Schéma UML des classes
 
-Le diagramme ci-dessous est affiché automatiquement par GitHub (syntaxe Mermaid).
+Versions image : [UML.png](UML.png) et [UML.pdf](UML.pdf) (vectoriel, zoomable).
+
+Le diagramme ci-dessous est la source (syntaxe Mermaid, affichée automatiquement par GitHub).
 
 ```mermaid
 classDiagram
@@ -22,11 +24,11 @@ classDiagram
     }
     class Config {
         <<utilitaire>>
-        +NB_SEGMENTS$ : int
-        +DUREE_SEGMENT$ : long
-        +DUREE_MANOEUVRE$ : long
-        +DUREE_TRAVERSEE_BATEAU$ : long
-        +DELAI_ENTRE_OUVERTURES$ : long
+        +NB_SEGMENTS : int$
+        +DUREE_SEGMENT : long$
+        +DUREE_MANOEUVRE : long$
+        +DUREE_TRAVERSEE_BATEAU : long$
+        +DELAI_ENTRE_OUVERTURES : long$
     }
     class Journal {
         <<utilitaire>>
