@@ -1,0 +1,41 @@
+Projet R3.05 - Simulation d'un pont mobile bidirectionnel
+Parties non réalisées ou simplifiées
+=========================================================
+
+Toutes les règles du sujet sont prises en compte dans la simulation :
+4 états du pont, segments partagés, voitures (1 segment), camions
+(2 segments réservés en même temps), convois exceptionnels (4 segments,
+blocage du sens opposé), file FIFO commune des bateaux, délai d'une minute
+entre deux ouvertures avec Timer/TimerTask, véhicules prioritaires avec
+bande d'urgence.
+
+Simplifications et choix faits :
+
+1. Affichage : le pont est redessiné dans la console (texte) à chaque
+   changement, au lieu d'une animation avec déplacement du curseur (codes
+   ANSI). Ce choix fonctionne dans tous les terminaux, y compris l'invite
+   de commandes Windows.
+
+2. Déplacement des véhicules : un véhicule avance d'un segment à la fois.
+   Il réserve le segment suivant et libère son dernier segment en une seule
+   opération ; il occupe donc toujours ses 1, 2 ou 4 segments. À la sortie,
+   tous ses segments sont libérés en même temps.
+
+3. Véhicules prioritaires : ils n'utilisent pas les segments (ils roulent
+   sur la voie laissée libre par les véhicules rangés sur la bande
+   d'urgence). Pour des raisons de sécurité, ils n'entrent pas quand le pont
+   n'est pas FERMÉ ou qu'une ouverture est en préparation, ni quand un convoi
+   exceptionnel roule en sens opposé (largeur insuffisante).
+
+4. Convois : si deux convois arrivent en sens opposés, le premier qui peut
+   entrer passe, l'autre attend sa sortie. Un convoi peut attendre longtemps
+   si des véhicules de son sens occupent sans arrêt les premiers segments
+   (pas de priorité du convoi sur les véhicules de son propre sens).
+
+5. La remarque du sujet (le bateau connaît l'heure de la prochaine
+   ouverture) est simplement affichée : à son arrivée, un bateau voit
+   l'heure à partir de laquelle l'ouverture sera autorisée.
+
+À faire par le binôme :
+- enregistrer la vidéo de démonstration (2 minutes maximum) ;
+- renommer le dossier final au format Nom1_Nom2.
